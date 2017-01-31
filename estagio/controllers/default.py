@@ -57,4 +57,53 @@ def call():
     """
     return service()
 
+def aluno():
+    form = SQLFORM(Aluno)
+    if form.process().accepted:
+        session.flash = 'Novo Aluno Cadastrado: %s' %form.vars.nome
+        redirect(URL('aluno'))
+    elif form.errors:
+        response.flash = 'Erros Encontrados'
+    else:
+        if not response.flash:
+            response.flash = 'Preencha o Formulário'
+    return dict(form=form)
+
+def professor():
+    form = SQLFORM(Professor)
+    if form.process().accepted:
+        session.flash = 'Novo Professor Cadastrado: %s' %form.vars.nome
+        redirect(URL('professor'))
+    elif form.errors:
+        response.flash = 'Erros Encontrados'
+    else:
+        if not response.flash:
+            response.flash = 'Preencha o Formulário'
+    return dict(form=form)
+
+def empresa():
+    form = SQLFORM(Empresa)
+    if form.process().accepted:
+        session.flash = 'Nova Empresa Cadastrada: %s' %form.vars.nome
+        redirect(URL('empresa'))
+    elif form.errors:
+        response.flash = 'Erros Encontrados'
+    else:
+        if not response.flash:
+            response.flash = 'Preencha o Formulário'
+    return dict(form=form)
+
+def estagio():
+    form = SQLFORM(Estagio)
+    if form.process().accepted:
+        session.flash = 'Nova Relação de Estágio Cadastrada: %s' %form.vars.nome
+        redirect(URL('estagio'))
+    elif form.errors:
+        response.flash = 'Erros Encontrados'
+    else:
+        if not response.flash:
+            response.flash = 'Preencha o Formulário'
+    return dict(form=form)
+
+
 
